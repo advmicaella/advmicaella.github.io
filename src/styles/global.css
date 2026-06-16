@@ -161,7 +161,8 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .hero-lawyer { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.15); font-family: 'Montserrat',sans-serif; font-size: .85rem; color: rgba(255,255,255,.6); }
 .hero-lawyer strong { color: var(--gold); font-weight: 700; }
-.google-badge { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem; font-family: 'Montserrat',sans-serif; font-size: .8rem; }
+.google-badge { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem; font-family: 'Montserrat',sans-serif; font-size: .8rem; text-decoration: none; opacity: .9; transition: opacity .15s; }
+.google-badge:hover { opacity: 1; text-decoration: none; }
 .google-stars { color: #FBBC05; letter-spacing: .05em; font-size: .9rem; }
 .google-score { color: var(--white); font-weight: 700; }
 .google-count { color: rgba(255,255,255,.5); }
