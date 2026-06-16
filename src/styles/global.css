@@ -87,11 +87,22 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 
 /* FOOTER */
 .site-footer { background: var(--navy-dark); color: rgba(255,255,255,.7); padding: 2.5rem 1.5rem; margin-top: 4rem; font-family: 'Montserrat',sans-serif; font-size: .85rem; }
-.footer-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+.footer-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: start; }
 .footer-brand .footer-name { font-weight: 700; color: var(--white); font-size: .95rem; margin-bottom: .25rem; }
 .footer-brand p { margin-bottom: .25rem; font-size: .8rem; }
-.footer-legal { font-size: .78rem; color: rgba(255,255,255,.5); line-height: 1.6; text-align: right; }
+.footer-contact-title { font-weight: 700; color: var(--white); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+.footer-contact-link { display: flex; align-items: center; gap: .4rem; font-size: .8rem; color: rgba(255,255,255,.6); text-decoration: none; margin-bottom: .4rem; transition: color .15s; }
+.footer-contact-link:hover { color: var(--gold); text-decoration: none; }
+.footer-legal { font-size: .78rem; color: rgba(255,255,255,.5); line-height: 1.6; }
 .footer-copy { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.1); text-align: center; font-size: .78rem; color: rgba(255,255,255,.4); max-width: var(--max-width); margin-left: auto; margin-right: auto; }
+
+/* POST CTA */
+.post-cta { margin: 3rem 0 2rem; border-radius: var(--radius); background: var(--navy); overflow: hidden; }
+.post-cta-inner { padding: 2rem; }
+.post-cta-title { font-family: 'Montserrat',sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--white); margin-bottom: .5rem; }
+.post-cta-desc { font-size: .9rem; color: rgba(255,255,255,.7); margin-bottom: 1.25rem; line-height: 1.6; }
+.post-cta-links { display: flex; gap: .75rem; flex-wrap: wrap; }
+.post-cta-links .btn { display: inline-flex; align-items: center; gap: .4rem; }
 
 /* BUTTONS */
 .btn { display: inline-block; font-family: 'Montserrat',sans-serif; font-weight: 700; font-size: .875rem; padding: .65rem 1.5rem; border-radius: var(--radius); text-decoration: none; transition: background .15s,transform .1s; cursor: pointer; border: none; letter-spacing: .02em; }
