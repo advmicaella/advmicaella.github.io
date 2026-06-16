@@ -2,7 +2,7 @@ name: Publicar Aprovados
 
 on:
   schedule:
-    - cron: '0 10,15,22 * * *'   # 7h, 12h, 19h de Brasília
+    - cron: '0 3 * * *'   # meia-noite de Brasília (03h UTC)
   workflow_dispatch:
 
 permissions:
