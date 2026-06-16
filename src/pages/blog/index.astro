@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const categorias = [
+  'Regularização Fundiária',
+  'Usucapião',
+  'ITBI e IPTU',
+  'Jurisprudência',
+  'Direito Imobiliário',
+  'Cartório e Registro',
+];
+
+const contadorCategorias = categorias.map(cat => ({
+  nome: cat,
+  total: posts.filter(p => p.data.categoria === cat).length,
+}));
+
+function formatarData(date: Date) {
+  return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+---
+<BaseLayout
+  title="Blog Jurídico"
+  description="Artigos educativos sobre direito imobiliário, regularização fundiária, usucapião, ITBI e IPTU em Porto Velho e Rondônia."
+>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>Blog Jurídico</h1>
+      <p>Conteúdo educativo sobre direito imobiliário em Porto Velho e Rondônia</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="two-col-layout">
+        <!-- LISTA DE POSTS -->
+        <div>
+          {posts.length === 0 ? (
+            <div class="info-alert">
+              <strong>Nenhum artigo publicado ainda.</strong> Volte em breve — novos conteúdos são adicionados regularmente.
+            </div>
+          ) : (
+            <div class="posts-list">
+              {posts.map(post => (
+                <div class="post-list-item">
+                  <div class="post-meta">
+                    <span class="categoria-badge">{post.data.categoria}</span>
+                    <span class="post-date">{formatarData(post.data.date)}</span>
+                  </div>
+                  <h2 class="post-title">
+                    <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                  </h2>
+                  <p class="post-excerpt">{post.data.excerpt}</p>
+                  <div class="tags-list">
+                    {post.data.tags.map(tag => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                  <div style="margin-top: 1rem;">
+                    <a href={`/blog/${post.slug}`} class="btn btn-ghost">Ler artigo →</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-widget">
+            <p class="sidebar-widget-title">Categorias</p>
+            <div class="sidebar-widget-body">
+              <ul class="category-list">
+                {contadorCategorias.filter(c => c.total > 0).map(cat => (
+                  <li>
+                    <a href={`/blog`}>
+                      {cat.nome}
+                      <span class="category-count">{cat.total}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <p class="sidebar-widget-title">Sobre</p>
+            <div class="sidebar-widget-body">
+              <div style="display: flex; gap: .75rem; align-items: center; margin-bottom: .75rem;">
+                <div class="about-avatar" style="margin-bottom: 0; width: 48px; height: 48px; font-size: .9rem; flex-shrink: 0;">MDF</div>
+                <div>
+                  <p style="font-family: 'Montserrat',sans-serif; font-weight: 700; font-size: .85rem; color: var(--navy); margin-bottom: .1rem;">Micaella Dallagnolli Freitas</p>
+                  <p style="font-size: .78rem; color: var(--text-light); margin-bottom: 0;">Advogada · OAB/RO 14.891</p>
+                </div>
+              </div>
+              <p style="font-size: .85rem; color: var(--text-light); margin-bottom: .75rem;">Especialista em regularização imobiliária e direito imobiliário em Porto Velho, Rondônia.</p>
+              <a href="/sobre" class="btn btn-ghost" style="font-size: .8rem;">Ver perfil →</a>
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <p class="sidebar-widget-title">RSS</p>
+            <div class="sidebar-widget-body">
+              <p style="font-size: .85rem; color: var(--text-light); margin-bottom: .75rem;">Assine o feed para receber novos artigos automaticamente.</p>
+              <a href="/rss.xml" class="rss-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+                Feed RSS
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

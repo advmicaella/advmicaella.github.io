@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const postDestaque = posts[0];
+const postsRecentes = posts.slice(1, 4);
+
+function formatarData(date: Date) {
+  return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+---
+<BaseLayout title="Direito Imobiliário em Rondônia">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <p class="hero-subtitle">Blog Jurídico · Porto Velho, Rondônia</p>
+      <h1>Direito Imobiliário<br />em Rondônia</h1>
+      <p class="hero-desc">
+        Informação jurídica clara e confiável para quem tem imóvel em Porto Velho e Rondônia.
+        Regularização, usucapião, ITBI, cartório e mais.
+      </p>
+      <div class="hero-cta">
+        <a href="/blog" class="btn btn-primary">Ver artigos</a>
+        <a href="/sobre" class="btn btn-outline">Sobre a advogada</a>
+      </div>
+      <div class="hero-lawyer">
+        <strong>Micaella Dallagnolli Freitas</strong> — Advogada · OAB/RO 14.891 · Regularização Imobiliária
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTAQUE -->
+  {postDestaque && (
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Artigo em destaque</h2>
+            <p class="section-desc">O mais recente conteúdo do blog</p>
+          </div>
+          <a href="/blog" class="btn btn-ghost">Ver todos →</a>
+        </div>
+        <a href={`/blog/${postDestaque.slug}`} style="text-decoration: none; display: block;">
+          <div class="featured-post">
+            <p class="featured-label">Destaque</p>
+            <div class="post-meta">
+              <span class="categoria-badge">{postDestaque.data.categoria}</span>
+              <span class="post-date">{formatarData(postDestaque.data.date)}</span>
+            </div>
+            <h3 class="post-title" style="font-size: 1.45rem;">{postDestaque.data.title}</h3>
+            <p class="post-excerpt">{postDestaque.data.excerpt}</p>
+            <div class="tags-list" style="margin-top: 1rem;">
+              {postDestaque.data.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- ÚLTIMOS ARTIGOS -->
+  {postsRecentes.length > 0 && (
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Últimos artigos</h2>
+            <p class="section-desc">Conteúdo educativo sobre direito imobiliário</p>
+          </div>
+          <a href="/blog" class="btn btn-ghost">Ver todos →</a>
+        </div>
+        <div class="posts-grid">
+          {postsRecentes.map(post => (
+            <div class="card">
+              <div class="card-body">
+                <div class="post-meta">
+                  <span class="categoria-badge">{post.data.categoria}</span>
+                  <span class="post-date">{formatarData(post.data.date)}</span>
+                </div>
+                <h3 class="post-title">
+                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                </h3>
+                <p class="post-excerpt">{post.data.excerpt}</p>
+              </div>
+              <div class="card-footer">
+                <a href={`/blog/${post.slug}`} class="btn btn-ghost">Ler artigo →</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- SOBRE -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="about-card" style="display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start;">
+        <div>
+          <div class="about-avatar">MDF</div>
+        </div>
+        <div>
+          <h2 style="margin-bottom: .5rem;">Sobre a advogada</h2>
+          <p style="color: var(--text-light); font-size: .95rem; margin-bottom: 1rem;">
+            Micaella Dallagnolli Freitas é advogada inscrita na OAB/RO sob o número 14.891, 
+            com atuação voltada ao direito imobiliário e à regularização fundiária em Porto Velho 
+            e no estado de Rondônia. O conteúdo deste blog é produzido com o objetivo de democratizar 
+            o acesso à informação jurídica para cidadãos que possuem ou pretendem adquirir imóveis na região.
+          </p>
+          <a href="/sobre" class="btn btn-ghost">Conheça mais →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
