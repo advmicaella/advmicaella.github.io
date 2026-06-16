@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Informação jurídica clara sobre direito imobiliário em Rondônia — Micaella Dallagnolli Freitas, Advogada OAB/RO 14.891' } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — Micaella Dallagnolli Freitas</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="alternate" type="application/rss+xml" title="Blog Jurídico — Micaella Dallagnolli Freitas" href="/rss.xml" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="header-brand">
+        <span class="brand-name">Micaella Dallagnolli Freitas</span>
+        <span class="brand-subtitle">Advogada · OAB/RO 14.891 · Regularização Imobiliária</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="/" aria-current={currentPath === '/' ? 'page' : undefined}>Início</a>
+        <a href="/blog" aria-current={currentPath.startsWith('/blog') ? 'page' : undefined}>Blog</a>
+        <a href="/sobre" aria-current={currentPath === '/sobre' ? 'page' : undefined}>Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-name">Micaella Dallagnolli Freitas</p>
+        <p>Advogada — OAB/RO 14.891</p>
+        <p>Porto Velho, Rondônia</p>
+      </div>
+      <div class="footer-legal">
+        <p>Este site tem caráter exclusivamente informativo e educativo. O conteúdo publicado não constitui consultoria ou orientação jurídica individualizada.</p>
+      </div>
+    </div>
+    <p class="footer-copy">
+      &copy; {new Date().getFullYear()} Micaella Dallagnolli Freitas — OAB/RO 14.891. Todos os direitos reservados.
+    </p>
+  </footer>
+</body>
+</html>
