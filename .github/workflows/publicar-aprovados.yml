@@ -1,0 +1,67 @@
+name: Publicar Aprovados
+
+on:
+  schedule:
+    - cron: '0 10,15,22 * * *'   # 7h, 12h, 19h de Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Baixar artigos aprovados do Drive
+        id: aprovados
+        env:
+          GOOGLE_SERVICE_ACCOUNT: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          GOOGLE_DRIVE_PASTA_APROVACAO: ${{ secrets.GOOGLE_DRIVE_PASTA_APROVACAO }}
+          GOOGLE_DRIVE_PASTA_ARQUIVO: ${{ secrets.GOOGLE_DRIVE_PASTA_ARQUIVO }}
+          GITHUB_OUTPUT: ${{ env.GITHUB_OUTPUT }}
+        run: node scripts/publicar-aprovados.js
+
+      - name: Commit e push dos artigos
+        if: steps.aprovados.outputs.publicados == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/content/blog/
+          git commit -m "blog: publica artigos aprovados"
+          git push origin main
+
+      - name: Build do site
+        if: steps.aprovados.outputs.publicados == 'true'
+        run: npm run build
+
+      - name: Upload artifact
+        if: steps.aprovados.outputs.publicados == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      - name: Deploy no GitHub Pages
+        if: steps.aprovados.outputs.publicados == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4

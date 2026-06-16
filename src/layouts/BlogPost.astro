@@ -7,9 +7,10 @@ interface Props {
   excerpt: string;
   categoria: string;
   tags: string[];
+  readingTime?: number;
 }
 
-const { title, date, excerpt, categoria, tags } = Astro.props;
+const { title, date, excerpt, categoria, tags, readingTime } = Astro.props;
 
 const dataFormatada = date.toLocaleDateString('pt-BR', {
   day: '2-digit',
@@ -37,6 +38,9 @@ const dataFormatada = date.toLocaleDateString('pt-BR', {
           <div class="post-header-meta">
             <span class="categoria-badge">{categoria}</span>
             <span class="post-date">{dataFormatada}</span>
+            {readingTime && (
+              <span class="reading-time">{readingTime} min de leitura</span>
+            )}
           </div>
           <h1>{title}</h1>
           {tags.length > 0 && (
