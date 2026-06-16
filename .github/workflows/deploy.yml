@@ -9,7 +9,6 @@ on:
       - 'package.json'
       - 'astro.config.mjs'
       - 'tsconfig.json'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -33,7 +32,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Instalar dependencias
+      - name: Instalar dependências
         run: npm install
 
       - name: Build do site
