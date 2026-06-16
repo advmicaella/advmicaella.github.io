@@ -233,3 +233,27 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
   .page-header h1 { font-size: 1.5rem; }
   .post-header h1 { font-size: 1.5rem; }
 }
+
+/* WHATSAPP FAB */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: #25D366;
+  color: #fff;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37,211,102,.45);
+  z-index: 1000;
+  transition: transform .2s, box-shadow .2s;
+  text-decoration: none;
+}
+.whatsapp-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(37,211,102,.6);
+  text-decoration: none;
+}
