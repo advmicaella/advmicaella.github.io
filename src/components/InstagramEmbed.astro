@@ -1,0 +1,14 @@
+---
+interface Props {
+  url: string;
+}
+
+const { url } = Astro.props;
+---
+<blockquote
+  class="instagram-media"
+  data-instgrm-permalink={url}
+  data-instgrm-version="14"
+  style="background:#FFF; border:0; border-radius:4px; box-shadow:0 2px 8px rgba(0,0,0,0.08); margin: 0; max-width:540px; min-width:280px; width:100%;"
+>
+</blockquote>

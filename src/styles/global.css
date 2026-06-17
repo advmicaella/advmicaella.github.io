@@ -135,6 +135,10 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 .post-excerpt { color: var(--text-light); font-size: .92rem; line-height: 1.65; margin-bottom: 0; font-family: 'Lora',serif; }
 .tags-list { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
 
+/* INSTAGRAM */
+.instagram-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; justify-content: center; }
+
+
 /* POSTS GRID */
 .posts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
 .posts-list { display: flex; flex-direction: column; gap: 1.5rem; }
