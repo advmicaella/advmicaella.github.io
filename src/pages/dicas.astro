@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InstagramEmbed from '../components/InstagramEmbed.astro';
+
+// Cole aqui os links dos posts/reels do Instagram que quer destacar (ex: "https://www.instagram.com/p/XXXXXXXXX/")
+const instagramPosts: string[] = [
+  'https://www.instagram.com/reel/DR0NQZpEk-3/',
+  'https://www.instagram.com/reel/DJIcj6IOuKi/',
+  'https://www.instagram.com/p/DIKpD2KoN-e/',
+  'https://www.instagram.com/p/DVdb2umDrai/',
+];
+---
+<BaseLayout
+  title="Dicas Rápidas"
+  description="Dicas rápidas em vídeo e imagem sobre direito imobiliário em Rondônia — Micaella Dallagnolli Freitas, Advogada OAB/RO 14.891."
+>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>Dicas Rápidas</h1>
+      <p>Orientação jurídica em formato curto — acompanhe @advmicaella no Instagram</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <p class="section-desc">Vídeos e posts com dicas sobre regularização de imóveis, usucapião e mais.</p>
+        </div>
+        <a href="https://instagram.com/advmicaella" target="_blank" rel="noopener" class="btn btn-primary">Seguir no Instagram</a>
+      </div>
+
+      {instagramPosts.length > 0 ? (
+        <div class="instagram-grid">
+          {instagramPosts.map(url => (
+            <InstagramEmbed url={url} />
+          ))}
+        </div>
+      ) : (
+        <p style="color: var(--text-light);">Nenhuma dica publicada ainda. Volte em breve.</p>
+      )}
+    </div>
+  </div>
+
+  {instagramPosts.length > 0 && (
+    <script async src="//www.instagram.com/embed.js"></script>
+  )}
+</BaseLayout>

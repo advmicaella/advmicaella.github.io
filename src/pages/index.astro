@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import InstagramEmbed from '../components/InstagramEmbed.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
@@ -9,14 +8,6 @@ const posts = (await getCollection('blog')).sort(
 
 const postDestaque = posts[0];
 const postsRecentes = posts.slice(1, 4);
-
-// Cole aqui os links dos posts do Instagram que quer destacar (ex: "https://www.instagram.com/p/XXXXXXXXX/")
-const instagramPosts: string[] = [
-  'https://www.instagram.com/reel/DR0NQZpEk-3/',
-  'https://www.instagram.com/reel/DJIcj6IOuKi/',
-  'https://www.instagram.com/p/DIKpD2KoN-e/',
-  'https://www.instagram.com/p/DVdb2umDrai/',
-];
 
 function formatarData(date: Date) {
   return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
@@ -113,26 +104,6 @@ function formatarData(date: Date) {
     </section>
   )}
 
-  <!-- INSTAGRAM -->
-  {instagramPosts.length > 0 && (
-    <section class="section" style="padding-top: 0;">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">No Instagram</h2>
-            <p class="section-desc">Acompanhe @advmicaella</p>
-          </div>
-          <a href="https://instagram.com/advmicaella" target="_blank" rel="noopener" class="btn btn-ghost">Seguir →</a>
-        </div>
-        <div class="instagram-grid">
-          {instagramPosts.map(url => (
-            <InstagramEmbed url={url} />
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
-
   <!-- SOBRE -->
   <section class="section" style="padding-top: 0;">
     <div class="container">
@@ -153,8 +124,4 @@ function formatarData(date: Date) {
       </div>
     </div>
   </section>
-
-  {instagramPosts.length > 0 && (
-    <script async src="//www.instagram.com/embed.js"></script>
-  )}
 </BaseLayout>

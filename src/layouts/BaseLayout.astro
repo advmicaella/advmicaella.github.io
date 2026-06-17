@@ -44,6 +44,7 @@ const canonicalURL = new URL(currentPath, Astro.site);
       <nav class="site-nav" aria-label="Navegação principal">
         <a href="/" aria-current={currentPath === '/' ? 'page' : undefined}>Início</a>
         <a href="/blog" aria-current={currentPath.startsWith('/blog') ? 'page' : undefined}>Blog</a>
+        <a href="/dicas" aria-current={currentPath === '/dicas' ? 'page' : undefined}>Dicas Rápidas</a>
         <a href="/sobre" aria-current={currentPath === '/sobre' ? 'page' : undefined}>Sobre</a>
       </nav>
     </div>
