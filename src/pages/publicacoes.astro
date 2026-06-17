@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const publicacoes = [
+  {
+    tipo: 'Trabalho de Conclusão de Curso',
+    titulo: 'Democratização do Ensino de Direitos Humanos no Ensino Fundamental: Desafios e Oportunidades para a Formação de Cidadãos Conscientes',
+    veiculo: 'Revista FT',
+    descricao: 'TCC apresentado para conclusão do curso de Direito, sobre como o ensino de direitos humanos pode ser ampliado na educação básica para formar cidadãos mais conscientes de seus direitos e deveres.',
+    link: 'https://revistaft.com.br/democratizacao-do-ensino-de-direitos-humanos-no-ensino-fundamental-desafios-e-oportunidades-para-a-formacao-de-cidadaos-conscientes/',
+  },
+  {
+    tipo: 'Artigo Científico',
+    titulo: 'Soft Skills na Advocacia Contemporânea',
+    veiculo: 'Revista do NUPED, 2021',
+    descricao: 'Artigo sobre a importância das competências comportamentais — comunicação, negociação, inteligência emocional — na formação e atuação do advogado contemporâneo.',
+    link: 'https://journal.nuped.com.br/index.php/revista/article/view/v2n3freitas2021',
+  },
+  {
+    tipo: 'Anais de Congresso',
+    titulo: 'Resumo apresentado no Congresso Internacional de Direitos Humanos de Coimbra',
+    veiculo: 'Anais do CIDH Coimbra',
+    descricao: 'Trabalho apresentado no congresso internacional realizado em Coimbra, Portugal, sobre temas de direitos humanos.',
+    link: 'http://trabalhoscidhcoimbra.com/ojs/index.php/anaiscidhcoimbra/article/view/948',
+  },
+  {
+    tipo: 'Colaboração Institucional',
+    titulo: 'Manual do Estagiário na Advocacia',
+    veiculo: 'OAB/RO',
+    descricao: 'Contribuição de texto para o manual de orientação aos estagiários de advocacia, publicado pela Ordem dos Advogados do Brasil — Seccional Rondônia.',
+    link: 'https://www.oab-ro.org.br/gerenciador/data/uploads/2023/06/Manual-do-Estagiario-na-Advocacia-A4-V1-1.pdf',
+  },
+];
+---
+<BaseLayout
+  title="Publicações"
+  description="Produção acadêmica e institucional de Micaella Dallagnolli Freitas — TCC, artigos científicos, congressos e colaborações com a OAB/RO."
+>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>Publicações</h1>
+      <p>Produção acadêmica e institucional</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container-narrow">
+      <p style="color: var(--text-light); margin-bottom: 2rem;">
+        Trabalhos acadêmicos e colaborações institucionais desenvolvidos ao longo da minha
+        formação e atuação como advogada.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        {publicacoes.map(pub => (
+          <a href={pub.link} target="_blank" rel="noopener" style="text-decoration: none; display: block;">
+            <div class="card">
+              <div class="card-body">
+                <span class="categoria-badge" style="margin-bottom: .75rem; display: inline-block;">{pub.tipo}</span>
+                <h3 class="post-title" style="font-size: 1.15rem;">{pub.titulo}</h3>
+                <p style="font-family: 'Montserrat',sans-serif; font-size: .8rem; color: var(--gold); font-weight: 700; margin-bottom: .6rem;">{pub.veiculo}</p>
+                <p class="post-excerpt">{pub.descricao}</p>
+              </div>
+              <div class="card-footer">
+                <span class="btn btn-ghost">Ler publicação →</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
