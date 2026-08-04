@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Qual a diferença entre posse e propriedade de um imóvel?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Posse é o uso e controle físico do imóvel — você mora, cuida, paga contas. Propriedade é o direito juridicamente reconhecido, comprovado pelo registro no cartório de imóveis. É possível ter posse sem ser proprietário e vice-versa. Para ser considerado dono perante a lei e terceiros, o imóvel precisa estar registrado em seu nome no cartório.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Moro há anos num imóvel sem escritura. Tenho algum direito?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Dependendo do tempo de posse, das condições de uso e da origem do imóvel, você pode ter direito à usucapião (judicial ou extrajudicial), à adjudicação compulsória (quando há contrato de compra e venda não formalizado) ou à regularização fundiária urbana. Cada situação exige uma análise individual, mas na maioria dos casos existe um caminho legal.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O que é um contrato de gaveta e ele tem valor legal?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Contrato de gaveta é o nome popular dado a um contrato particular de compra e venda que nunca foi registrado em cartório. Ele tem valor entre as partes signatárias, mas não é oponível a terceiros e não transfere a propriedade definitiva. Para regularizar a situação, é possível registrar o contrato, lavrar escritura pública ou, dependendo do tempo de posse, ingressar com usucapião.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O que é usucapião e quando posso pedir?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Usucapião é a aquisição da propriedade pela posse prolongada, contínua e sem oposição. Os prazos variam: 5 anos para imóvel urbano de até 250 m² usado como moradia (usucapião especial urbana), 10 a 15 anos nas modalidades ordinárias e extraordinárias. Existem também modalidades para imóveis rurais e para casais. É necessário comprovar a posse e atender aos requisitos de cada modalidade.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Posso fazer usucapião sem entrar na Justiça?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Desde 2015, o Brasil permite a usucapião extrajudicial, feita diretamente no cartório de registro de imóveis, sem necessidade de ação judicial. O processo é mais rápido quando há consenso entre as partes. Porém, se houver qualquer oposição ou irregularidade documental, o pedido pode ser redirecionado ao Judiciário. Um advogado é indispensável e obrigatório nesse procedimento.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O que é adjudicação compulsória?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Adjudicação compulsória é o instrumento jurídico usado quando você comprou um imóvel, pagou integralmente, mas o vendedor se recusa a assinar a escritura — ou não está mais disponível (faleceu, desapareceu, etc.). Nesse caso, o comprador pode pedir judicialmente ou extrajudicialmente que a transferência seja feita à força, com base no contrato de compra e venda.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O que é ITBI e quando ele é cobrado?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ITBI é o Imposto sobre Transmissão de Bens Imóveis — um tributo municipal cobrado sempre que há transferência onerosa (paga) de um imóvel entre pessoas vivas. É pago no momento de lavrar a escritura. A alíquota varia por município; em Porto Velho, é de 2% sobre o valor venal do imóvel ou o valor da transação, o que for maior.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Posso contestar o valor base do ITBI cobrado pela prefeitura?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Se o valor venal usado como base de cálculo pelo município estiver acima do valor real da transação, é possível impugnar administrativamente e, se necessário, judicialmente. O STJ já firmou entendimento de que o ITBI deve ser calculado sobre o valor real da transação, não sobre o valor venal de referência quando este for superior.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual a diferença entre escritura e registro de imóvel?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Escritura é o documento público lavrado pelo tabelião no Cartório de Notas, que formaliza a compra e venda. Registro é o ato praticado pelo Cartório de Registro de Imóveis que transfere efetivamente a propriedade. A escritura sem registro não transfere a propriedade — os dois passos são necessários. Muitas pessoas fazem a escritura e "esquecem" de registrar, o que gera problemas futuros.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O que é regularização fundiária urbana (Reurb)?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A Reurb (Lei 13.465/2017) é o conjunto de medidas jurídicas, urbanísticas e sociais voltadas a regularizar núcleos urbanos informais — favelas, loteamentos irregulares, ocupações. Pode ser promovida pelo município, pelo Estado ou por iniciativa dos próprios moradores. Ao final, os ocupantes obtêm o título de propriedade ou de legitimação de posse do imóvel.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quanto tempo leva para regularizar um imóvel?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Depende muito da modalidade. Uma escritura simples pode ser lavrada em dias. Usucapião extrajudicial costuma levar de 3 a 12 meses. Usucapião judicial pode levar anos. Processos de Reurb envolvem etapas administrativas junto à prefeitura e podem variar bastante. O importante é iniciar o processo — a demora em regularizar pode gerar mais problemas com o tempo.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso de advogado para regularizar meu imóvel?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Para usucapião extrajudicial e judicial, sim — a lei exige representação por advogado. Para lavrar escritura, não é obrigatório, mas é recomendável para verificar a situação do imóvel antes do ato. Para processos de Reurb ou adjudicação compulsória, o advogado é fundamental para analisar a documentação e evitar problemas futuros.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Como funciona o atendimento?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O atendimento é feito presencialmente em Porto Velho (RO) ou por videochamada, mediante agendamento. Para agendar uma consulta, entre em contato pelo WhatsApp (69) 99274-0200 ou pelo e-mail advmicaella@gmail.com. Na consulta, analisamos a sua situação específica e indicamos o caminho mais adequado.',
+      },
+    },
+  ],
+};
+---
+<BaseLayout
+  title="Perguntas Frequentes"
+  description="Tire suas dúvidas sobre regularização fundiária, usucapião, ITBI, escritura e registro de imóveis em Porto Velho, Rondônia."
+  schemaJSON={faqSchema}
+>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <h1>Perguntas Frequentes</h1>
+      <p>Dúvidas comuns sobre regularização imobiliária, usucapião, ITBI e registro em Porto Velho</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="two-col-layout">
+        <!-- FAQ PRINCIPAL -->
+        <div>
+
+          <div class="faq-group">
+            <p class="faq-group-title">Posse, Propriedade e Contratos</p>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">Qual a diferença entre posse e propriedade de um imóvel?</summary>
+                <div class="faq-answer">
+                  <p><strong>Posse</strong> é o uso e controle físico do imóvel — você mora, cuida, paga contas. <strong>Propriedade</strong> é o direito juridicamente reconhecido, comprovado pelo registro no cartório de imóveis.</p>
+                  <p>É possível ter posse sem ser proprietário. Para ser considerado dono perante a lei e terceiros, o imóvel precisa estar <strong>registrado em seu nome</strong> no cartório de registro de imóveis.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">Moro há anos num imóvel sem escritura. Tenho algum direito?</summary>
+                <div class="faq-answer">
+                  <p>Sim. Dependendo do tempo de posse, das condições de uso e da origem do imóvel, você pode ter direito à:</p>
+                  <ul>
+                    <li><strong>Usucapião</strong> — pelo tempo de posse;</li>
+                    <li><strong>Adjudicação compulsória</strong> — quando há contrato de compra não formalizado;</li>
+                    <li><strong>Regularização fundiária (Reurb)</strong> — para ocupações em áreas informais.</li>
+                  </ul>
+                  <p>Cada situação exige análise individual. Na maioria dos casos, existe um caminho legal.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">O que é um contrato de gaveta e ele tem valor legal?</summary>
+                <div class="faq-answer">
+                  <p>Contrato de gaveta é o nome popular dado a um contrato particular de compra e venda que nunca foi registrado em cartório. Ele tem valor entre as partes signatárias, mas <strong>não é oponível a terceiros</strong> e não transfere a propriedade definitiva.</p>
+                  <p>Para regularizar, é possível registrar o contrato, lavrar escritura pública ou, dependendo do tempo de posse, ingressar com usucapião.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="faq-group">
+            <p class="faq-group-title">Usucapião</p>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">O que é usucapião e quando posso pedir?</summary>
+                <div class="faq-answer">
+                  <p>Usucapião é a aquisição da propriedade pela posse prolongada, contínua e sem oposição. Os prazos variam:</p>
+                  <ul>
+                    <li><strong>5 anos</strong> — imóvel urbano de até 250 m² usado como moradia (usucapião especial urbana);</li>
+                    <li><strong>10 a 15 anos</strong> — modalidades ordinárias e extraordinárias;</li>
+                    <li>Existem também modalidades para imóveis rurais e para casais.</li>
+                  </ul>
+                  <p>É necessário comprovar a posse e atender aos requisitos de cada modalidade.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">Posso fazer usucapião sem entrar na Justiça?</summary>
+                <div class="faq-answer">
+                  <p>Sim. Desde 2015, o Brasil permite a <strong>usucapião extrajudicial</strong>, feita diretamente no cartório de registro de imóveis, sem necessidade de ação judicial. O processo é mais rápido quando há consenso entre as partes.</p>
+                  <p>Se houver qualquer oposição ou irregularidade documental, o pedido pode ser redirecionado ao Judiciário. Um advogado é <strong>indispensável e obrigatório</strong> nesse procedimento.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="faq-group">
+            <p class="faq-group-title">Adjudicação Compulsória e Reurb</p>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">O que é adjudicação compulsória?</summary>
+                <div class="faq-answer">
+                  <p>É o instrumento jurídico usado quando você comprou um imóvel, pagou integralmente, mas o vendedor se recusa a assinar a escritura — ou não está mais disponível (faleceu, desapareceu, etc.).</p>
+                  <p>Nesse caso, o comprador pode pedir judicialmente ou extrajudicialmente que a transferência seja feita com base no contrato de compra e venda.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">O que é regularização fundiária urbana (Reurb)?</summary>
+                <div class="faq-answer">
+                  <p>A Reurb (Lei 13.465/2017) é o conjunto de medidas jurídicas, urbanísticas e sociais voltadas a regularizar núcleos urbanos informais — favelas, loteamentos irregulares, ocupações.</p>
+                  <p>Pode ser promovida pelo município, pelo Estado ou por iniciativa dos próprios moradores. Ao final, os ocupantes obtêm o título de propriedade ou de legitimação de posse do imóvel.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="faq-group">
+            <p class="faq-group-title">ITBI, Escritura e Registro</p>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">O que é ITBI e quando ele é cobrado?</summary>
+                <div class="faq-answer">
+                  <p>ITBI é o <strong>Imposto sobre Transmissão de Bens Imóveis</strong> — um tributo municipal cobrado sempre que há transferência onerosa (paga) de um imóvel entre pessoas vivas. É pago no momento de lavrar a escritura.</p>
+                  <p>Em Porto Velho, a alíquota é de <strong>2%</strong> sobre o valor venal do imóvel ou o valor da transação, o que for maior.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">Posso contestar o valor do ITBI cobrado pela prefeitura?</summary>
+                <div class="faq-answer">
+                  <p>Sim. Se o valor venal usado como base de cálculo estiver acima do valor real da transação, é possível impugnar administrativamente e, se necessário, judicialmente.</p>
+                  <p>O STJ já firmou entendimento de que o ITBI deve ser calculado sobre o <strong>valor real da transação</strong>, não sobre o valor venal de referência quando este for superior.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">Qual a diferença entre escritura e registro de imóvel?</summary>
+                <div class="faq-answer">
+                  <p><strong>Escritura</strong> é o documento público lavrado pelo tabelião no Cartório de Notas, que formaliza a compra e venda.</p>
+                  <p><strong>Registro</strong> é o ato praticado pelo Cartório de Registro de Imóveis que <em>transfere efetivamente a propriedade</em>.</p>
+                  <p>A escritura sem registro não transfere a propriedade. Os dois passos são necessários. Muitas pessoas fazem a escritura e "esquecem" de registrar, o que gera problemas futuros.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="faq-group">
+            <p class="faq-group-title">Prazos e Atendimento</p>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-question">Quanto tempo leva para regularizar um imóvel?</summary>
+                <div class="faq-answer">
+                  <p>Depende muito da modalidade:</p>
+                  <ul>
+                    <li>Escritura simples: pode ser lavrada em dias;</li>
+                    <li>Usucapião extrajudicial: costuma levar de 3 a 12 meses;</li>
+                    <li>Usucapião judicial: pode levar anos;</li>
+                    <li>Processos de Reurb: variam conforme a complexidade municipal.</li>
+                  </ul>
+                  <p>O importante é iniciar o processo — a demora em regularizar pode gerar mais problemas com o tempo.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">Preciso de advogado para regularizar meu imóvel?</summary>
+                <div class="faq-answer">
+                  <p>Para usucapião extrajudicial e judicial, <strong>sim — a lei exige representação por advogado</strong>. Para lavrar escritura, não é obrigatório, mas é recomendável para verificar a situação do imóvel antes do ato. Para processos de Reurb ou adjudicação compulsória, o advogado é fundamental para analisar a documentação e evitar problemas futuros.</p>
+                </div>
+              </details>
+
+              <details class="faq-item">
+                <summary class="faq-question">Como funciona o atendimento?</summary>
+                <div class="faq-answer">
+                  <p>O atendimento é feito <strong>presencialmente em Porto Velho (RO)</strong> ou por <strong>videochamada</strong>, mediante agendamento.</p>
+                  <p>Para agendar uma consulta, entre em contato pelo WhatsApp <a href="https://wa.me/5569992740200">(69) 99274-0200</a> ou pelo e-mail <a href="mailto:advmicaella@gmail.com">advmicaella@gmail.com</a>.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+          <div class="sidebar-widget">
+            <p class="sidebar-widget-title">Ainda com dúvidas?</p>
+            <div class="sidebar-widget-body">
+              <p style="font-size: .85rem; color: var(--text-light); margin-bottom: 1rem; line-height: 1.6;">Se a sua dúvida não está aqui ou você precisa de orientação sobre o seu caso específico, entre em contato.</p>
+              <div style="display: flex; flex-direction: column; gap: .6rem;">
+                <a href="https://wa.me/5569992740200" target="_blank" rel="noopener" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem;">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  WhatsApp
+                </a>
+                <a href="mailto:advmicaella@gmail.com" class="btn btn-outline" style="color: var(--navy); border-color: var(--navy); font-size: .85rem;">E-mail</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <p class="sidebar-widget-title">Artigos Relacionados</p>
+            <div class="sidebar-widget-body">
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .6rem;">
+                <li><a href="/blog/morar-num-imovel-nao-significa-ser-dono" style="font-family: 'Montserrat',sans-serif; font-size: .82rem; font-weight: 600; color: var(--navy); text-decoration: none; line-height: 1.4; display: block;">Morar num imóvel não significa ser dono →</a></li>
+                <li><a href="/blog/voce-nao-e-o-dono-mas-a-lei-pode-proteger-voce" style="font-family: 'Montserrat',sans-serif; font-size: .82rem; font-weight: 600; color: var(--navy); text-decoration: none; line-height: 1.4; display: block;">Você não é o dono, mas a lei pode proteger você →</a></li>
+                <li><a href="/blog/paguei-tudo-pelo-imovel-mas-ainda-nao-sou-dono" style="font-family: 'Montserrat',sans-serif; font-size: .82rem; font-weight: 600; color: var(--navy); text-decoration: none; line-height: 1.4; display: block;">Paguei tudo pelo imóvel mas ainda não sou dono →</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <p class="sidebar-widget-title">Aviso Legal</p>
+            <div class="sidebar-widget-body">
+              <p style="font-size: .8rem; color: var(--text-light); line-height: 1.6; margin-bottom: 0;">Este conteúdo é informativo e educativo. Não substitui consultoria jurídica individualizada.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

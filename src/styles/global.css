@@ -271,6 +271,28 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 .related-item-cat { font-family: 'Montserrat',sans-serif; font-size: .7rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .25rem; }
 .related-item-title { font-family: 'Montserrat',sans-serif; font-size: .9rem; font-weight: 700; color: var(--navy); line-height: 1.35; margin: 0; }
 
+/* FAQ */
+.faq-group { margin-bottom: 2.5rem; }
+.faq-group-title { font-family: 'Montserrat',sans-serif; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); margin-bottom: 1rem; padding-bottom: .4rem; border-bottom: 2px solid var(--gold-light); }
+.faq-list { display: flex; flex-direction: column; gap: .5rem; }
+
+.faq-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color .15s; }
+.faq-item[open] { border-color: var(--gold); }
+
+.faq-question { font-family: 'Montserrat',sans-serif; font-weight: 700; font-size: .95rem; color: var(--navy); padding: 1rem 1.25rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; line-height: 1.4; user-select: none; }
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question::after { content: '+'; font-size: 1.4rem; font-weight: 400; color: var(--gold); flex-shrink: 0; line-height: 1; transition: transform .2s; }
+.faq-item[open] .faq-question::after { content: '−'; }
+.faq-question:hover { color: var(--blue); }
+
+.faq-answer { padding: 0 1.25rem 1.1rem; font-family: 'Lora',serif; font-size: .95rem; line-height: 1.75; color: var(--text); border-top: 1px solid var(--border); padding-top: .9rem; }
+.faq-answer p { margin-bottom: .75rem; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-answer ul { padding-left: 1.25rem; margin-bottom: .75rem; }
+.faq-answer li { margin-bottom: .3rem; }
+.faq-answer a { color: var(--blue); }
+.faq-answer strong { color: var(--navy); }
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .posts-grid { grid-template-columns: repeat(2,1fr); }
