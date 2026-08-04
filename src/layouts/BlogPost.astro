@@ -44,20 +44,15 @@ const schema = {
 };
 ---
 <BaseLayout title={title} description={excerpt} schemaJSON={schema}>
-  <div class="page-header">
-    <div class="page-header-inner">
-      <nav class="breadcrumb" aria-label="Caminho">
+  <div class="section">
+    <div class="container-narrow">
+      <nav class="breadcrumb" aria-label="Caminho" style="margin-bottom: 1.5rem;">
         <a href="/">Início</a>
         <span class="breadcrumb-sep">›</span>
         <a href="/blog">Blog</a>
         <span class="breadcrumb-sep">›</span>
-        <span>{title}</span>
+        <span style="color: var(--text-light);">{title}</span>
       </nav>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="container-narrow">
       <article>
         <header class="post-header">
           <div class="post-header-meta">
