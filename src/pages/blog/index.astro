@@ -6,6 +6,10 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
+function slugify(str: string) {
+  return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
 const categorias = [
   'Regularização Fundiária',
   'Usucapião',
@@ -78,7 +82,7 @@ function formatarData(date: Date) {
               <ul class="category-list">
                 {contadorCategorias.filter(c => c.total > 0).map(cat => (
                   <li>
-                    <a href={`/blog`}>
+                    <a href={`/blog/categoria/${slugify(cat.nome)}`}>
                       {cat.nome}
                       <span class="category-count">{cat.total}</span>
                     </a>
@@ -92,7 +96,7 @@ function formatarData(date: Date) {
             <p class="sidebar-widget-title">Sobre</p>
             <div class="sidebar-widget-body">
               <div style="display: flex; gap: .75rem; align-items: center; margin-bottom: .75rem;">
-                <div class="about-avatar" style="margin-bottom: 0; width: 48px; height: 48px; font-size: .9rem; flex-shrink: 0;">MDF</div>
+                <img src="/micaella.jpg" alt="Micaella Dallagnolli Freitas" class="about-photo" style="width: 48px; height: 48px; margin-bottom: 0;" />
                 <div>
                   <p style="font-family: 'Montserrat',sans-serif; font-weight: 700; font-size: .85rem; color: var(--navy); margin-bottom: .1rem;">Micaella Dallagnolli Freitas</p>
                   <p style="font-size: .78rem; color: var(--text-light); margin-bottom: 0;">Advogada · OAB/RO 14.891</p>

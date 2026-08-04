@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  function slugify(str: string) {
+    return str.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  const posts = await getCollection('blog');
+  const categorias = [...new Set(posts.map(p => p.data.categoria))];
+  return categorias.map(categoria => ({
+    params: { categoria: slugify(categoria) },
+    props: {
+      categoriaName: categoria,
+      posts: posts
+        .filter(p => p.data.categoria === categoria)
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { categoriaName, posts } = Astro.props;
+
+function formatarData(date: Date) {
+  return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+}
+---
+<BaseLayout
+  title={`${categoriaName} — Blog Jurídico`}
+  description={`Artigos sobre ${categoriaName} — Micaella Dallagnolli Freitas, Advogada OAB/RO 14.891`}
+>
+  <div class="page-header">
+    <div class="page-header-inner">
+      <nav class="breadcrumb" aria-label="Caminho">
+        <a href="/">Início</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="/blog">Blog</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>{categoriaName}</span>
+      </nav>
+      <h1>{categoriaName}</h1>
+      <p>{posts.length} {posts.length === 1 ? 'artigo' : 'artigos'}</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container-narrow">
+      <div class="posts-list">
+        {posts.map(post => (
+          <div class="post-list-item">
+            <div class="post-meta">
+              <span class="categoria-badge">{post.data.categoria}</span>
+              <span class="post-date">{formatarData(post.data.date)}</span>
+            </div>
+            <h2 class="post-title">
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h2>
+            <p class="post-excerpt">{post.data.excerpt}</p>
+            <div style="margin-top: 1rem;">
+              <a href={`/blog/${post.slug}`} class="btn btn-ghost">Ler artigo →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <a href="/blog" class="back-link">← Voltar ao Blog</a>
+    </div>
+  </div>
+</BaseLayout>

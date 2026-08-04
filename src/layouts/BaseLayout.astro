@@ -4,9 +4,11 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  schemaJSON?: object;
 }
 
-const { title, description = 'Informação jurídica clara sobre direito imobiliário em Rondônia — Micaella Dallagnolli Freitas, Advogada OAB/RO 14.891' } = Astro.props;
+const { title, description = 'Informação jurídica clara sobre direito imobiliário em Rondônia — Micaella Dallagnolli Freitas, Advogada OAB/RO 14.891', schemaJSON } = Astro.props;
+const GA_ID = ''; // Cole aqui seu ID do Google Analytics 4 (ex: G-XXXXXXXXXX) quando criar a propriedade
 const currentPath = Astro.url.pathname;
 const canonicalURL = new URL(currentPath, Astro.site);
 ---
@@ -33,6 +35,9 @@ const canonicalURL = new URL(currentPath, Astro.site);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate" type="application/rss+xml" title="Blog Jurídico — Micaella Dallagnolli Freitas" href="/rss.xml" />
+  {schemaJSON && <script type="application/ld+json" set:html={JSON.stringify(schemaJSON)} />}
+  {GA_ID && <script is:inline set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}></script>}
+  {GA_ID && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>}
 </head>
 <body>
   <header class="site-header">

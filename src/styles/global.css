@@ -243,6 +243,21 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 .rss-link { display: inline-flex; align-items: center; gap: .4rem; font-family: 'Montserrat',sans-serif; font-size: .78rem; color: var(--text-light); text-decoration: none; }
 .rss-link:hover { color: var(--blue); }
 
+/* SHARE SECTION */
+.share-section { margin: 2rem 0 1.5rem; padding: .85rem 1.25rem; background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.share-label { font-family: 'Montserrat',sans-serif; font-size: .78rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: .07em; }
+.share-wpp { display: inline-flex; align-items: center; gap: .4rem; background: #25D366; color: #fff; font-family: 'Montserrat',sans-serif; font-size: .82rem; font-weight: 700; padding: .4rem 1rem; border-radius: 999px; text-decoration: none; transition: opacity .15s; }
+.share-wpp:hover { opacity: .85; }
+
+/* RELATED POSTS */
+.related-posts { margin: 2rem 0 1rem; }
+.related-posts-title { font-family: 'Montserrat',sans-serif; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-light); margin-bottom: 1rem; }
+.related-list { display: flex; flex-direction: column; gap: .6rem; }
+.related-item { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: .9rem 1.1rem; text-decoration: none; display: block; transition: box-shadow .15s, border-color .15s; }
+.related-item:hover { box-shadow: var(--shadow); border-color: var(--gold); }
+.related-item-cat { font-family: 'Montserrat',sans-serif; font-size: .7rem; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .25rem; }
+.related-item-title { font-family: 'Montserrat',sans-serif; font-size: .9rem; font-weight: 700; color: var(--navy); line-height: 1.35; margin: 0; }
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .posts-grid { grid-template-columns: repeat(2,1fr); }

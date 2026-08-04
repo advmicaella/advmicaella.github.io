@@ -12,8 +12,31 @@ const postsRecentes = posts.slice(1, 4);
 function formatarData(date: Date) {
   return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
 }
+
+const legalServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  name: 'Micaella Dallagnolli Freitas — Advogada',
+  description: 'Advogada especializada em regularização imobiliária e direito imobiliário em Porto Velho, Rondônia.',
+  url: 'https://advmicaella.github.io',
+  telephone: '+5569992740200',
+  email: 'advmicaella@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Porto Velho',
+    addressRegion: 'RO',
+    addressCountry: 'BR',
+  },
+  areaServed: { '@type': 'State', name: 'Rondônia' },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    reviewCount: '64',
+    bestRating: '5',
+  },
+};
 ---
-<BaseLayout title="Direito Imobiliário em Rondônia">
+<BaseLayout title="Direito Imobiliário em Rondônia" schemaJSON={legalServiceSchema}>
   <!-- HERO -->
   <section class="hero">
     <div class="container">
