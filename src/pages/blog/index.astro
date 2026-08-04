@@ -51,8 +51,8 @@ function formatarData(date: Date) {
             </div>
           ) : (
             <div class="posts-list">
-              {posts.map(post => (
-                <div class="post-list-item">
+              {posts.map((post, i) => (
+                <div class={`post-list-item${i === 0 ? ' post-list-item--featured' : ''}`}>
                   <div class="post-meta">
                     <span class="categoria-badge">{post.data.categoria}</span>
                     <span class="post-date">{formatarData(post.data.date)}</span>
