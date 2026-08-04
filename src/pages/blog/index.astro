@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import NewsletterForm from '../../components/NewsletterForm.astro';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -104,6 +105,13 @@ function formatarData(date: Date) {
               </div>
               <p style="font-size: .85rem; color: var(--text-light); margin-bottom: .75rem;">Especialista em regularização imobiliária e direito imobiliário em Porto Velho, Rondônia.</p>
               <a href="/sobre" class="btn btn-ghost" style="font-size: .8rem;">Ver perfil →</a>
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <p class="sidebar-widget-title">Newsletter</p>
+            <div class="sidebar-widget-body" style="padding:0;">
+              <NewsletterForm />
             </div>
           </div>
 
