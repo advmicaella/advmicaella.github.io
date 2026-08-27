@@ -21,7 +21,7 @@ Isso envolve, entre outras frentes, a reconstrução da cadeia dominial do imóv
 
 O erro mais frequente não é a ausência de cuidado — é achar que "documentação em ordem" significa "sem problema nenhum". Uma escritura registrada, por si só, não garante que o histórico do imóvel está limpo. A própria lógica do sistema registral brasileiro é de continuidade: cada transmissão se apoia na anterior, e uma falha lá atrás pode continuar produzindo efeito hoje, mesmo que ninguém tenha percebido nas transferências seguintes¹.
 
-É por isso que devida diligência não se resume a "olhar a matrícula". Envolve saber o que procurar dentro dela, e saber quando um dado exige checagem cruzada em outra fonte — certidões forenses, cartórios de protesto, situação fiscal municipal e, dependendo do caso, registros trabalhistas ou de execução fiscal envolvendo o vendedor.
+É por isso que due diligence não se resume a "olhar a matrícula". Envolve saber o que procurar dentro dela, e saber quando um dado exige checagem cruzada em outra fonte — certidões forenses, cartórios de protesto, situação fiscal municipal e, dependendo do caso, registros trabalhistas ou de execução fiscal envolvendo o vendedor.
 
 ## Due diligence também para quem já tem o imóvel
 
