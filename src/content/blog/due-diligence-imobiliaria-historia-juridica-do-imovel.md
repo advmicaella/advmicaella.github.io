@@ -3,7 +3,7 @@ title: "O imóvel pode estar perfeito. A história dele, nem sempre."
 date: 2026-08-27
 categoria: "Direito Imobiliário"
 excerpt: "Encontrar o imóvel certo é difícil o bastante. Mas o imóvel carrega uma história jurídica própria — dívidas, restrições, falhas na cadeia dominial. Entender essa história antes da assinatura é o que separa um patrimônio protegido de um exposto a litígio."
-tags: ["due diligence", "compra de imóvel", "segurança jurídica", "matrícula", "registro de imóveis"]
+tags: ["due diligence", "compra de imóvel", "segurança jurídica", "matrícula", "registro de imóveis", "regularização imobiliária"]
 readingTime: 5
 ---
 
@@ -22,6 +22,14 @@ Isso envolve, entre outras frentes, a reconstrução da cadeia dominial do imóv
 O erro mais frequente não é a ausência de cuidado — é achar que "documentação em ordem" significa "sem problema nenhum". Uma escritura registrada, por si só, não garante que o histórico do imóvel está limpo. A própria lógica do sistema registral brasileiro é de continuidade: cada transmissão se apoia na anterior, e uma falha lá atrás pode continuar produzindo efeito hoje, mesmo que ninguém tenha percebido nas transferências seguintes¹.
 
 É por isso que devida diligência não se resume a "olhar a matrícula". Envolve saber o que procurar dentro dela, e saber quando um dado exige checagem cruzada em outra fonte — certidões forenses, cartórios de protesto, situação fiscal municipal e, dependendo do caso, registros trabalhistas ou de execução fiscal envolvendo o vendedor.
+
+## Due diligence também para quem já tem o imóvel
+
+Due diligence não é só para quem está comprando. Quem já mora num imóvel irregular — sem escritura, sem matrícula, ou com documentação incompleta — também se beneficia de um levantamento técnico antes de iniciar qualquer processo de regularização.
+
+Nesse caso, o objetivo é diferente: entender qual o caminho correto para regularizar (usucapião extrajudicial, adjudicação compulsória, REURB, regularização cartorária), mapear os documentos que já existem e identificar os que precisam ser obtidos antes de qualquer protocolo. Esse diagnóstico evita meses de processo no caminho errado — ou a descoberta tardia de que falta um documento essencial que o cartório vai exigir.
+
+Em Rondônia, onde muitos imóveis em Porto Velho e no interior estão há anos sem registro atualizado ou com situações de posse informais, esse tipo de levantamento prévio é especialmente importante: cada situação tem uma solução adequada, e a escolha errada pode custar tempo e dinheiro sem chegar a resultado.
 
 ## O que está em jogo
 
