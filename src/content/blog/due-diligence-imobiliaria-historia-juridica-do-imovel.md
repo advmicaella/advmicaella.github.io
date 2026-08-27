@@ -2,7 +2,7 @@
 title: "O imóvel pode estar perfeito. A história dele, nem sempre."
 date: 2026-08-27
 categoria: "Direito Imobiliário"
-excerpt: "Encontrar o imóvel certo é difícil o bastante. Mas o imóvel carrega uma história jurídica própria — dívidas, restrições, falhas na cadeia dominial. Entender essa história antes da assinatura é o que separa um patrimônio protegido de um exposto a litígio."
+excerpt: "O imóvel carrega uma história jurídica própria — dívidas, restrições, falhas na cadeia dominial. Entendê-la antes da assinatura protege seu patrimônio."
 tags: ["due diligence", "compra de imóvel", "segurança jurídica", "matrícula", "registro de imóveis", "regularização imobiliária"]
 readingTime: 5
 ---
